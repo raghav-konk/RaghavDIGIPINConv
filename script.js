@@ -13,15 +13,15 @@ const BOUNDS = {
 };
 
 function getDigiPin(lat, lon) {
-  if (lat < BOUNDS.minLat || lat > BOUNDS.maxLat) throw new Error('Latitude out of range');
-  if (lon < BOUNDS.minLon || lon > BOUNDS.maxLon) throw new Error('Longitude out of range');
+  if (lat < BOUNDS.minLat || lat > BOUNDS.maxLat) throw new Error("Latitude out of range");
+  if (lon < BOUNDS.minLon || lon > BOUNDS.maxLon) throw new Error("Longitude out of range");
 
   let minLat = BOUNDS.minLat;
   let maxLat = BOUNDS.maxLat;
   let minLon = BOUNDS.minLon;
   let maxLon = BOUNDS.maxLon;
 
-  let digiPin = '';
+  let digiPin = "";
 
   for (let level = 1; level <= 10; level++) {
     const latDiv = (maxLat - minLat) / 4;
@@ -34,8 +34,7 @@ function getDigiPin(lat, lon) {
     col = Math.max(0, Math.min(col, 3));
 
     digiPin += DIGIPIN_GRID[row][col];
-
-    if (level === 3 || level === 6) digiPin += '-';
+    if (level === 3 || level === 6) digiPin += "-";
 
     maxLat = minLat + latDiv * (4 - row);
     minLat = minLat + latDiv * (3 - row);
@@ -47,8 +46,8 @@ function getDigiPin(lat, lon) {
 }
 
 function getLatLngFromDigiPin(digiPin) {
-  const pin = digiPin.replace(/-/g, '');
-  if (pin.length !== 10) throw new Error('Invalid DIGIPIN');
+  const pin = digiPin.replace(/-/g, "");
+  if (pin.length !== 10) throw new Error("Invalid DIGIPIN");
 
   let minLat = BOUNDS.minLat;
   let maxLat = BOUNDS.maxLat;
@@ -57,8 +56,7 @@ function getLatLngFromDigiPin(digiPin) {
 
   for (let i = 0; i < 10; i++) {
     const char = pin[i];
-    let found = false;
-    let ri = -1, ci = -1;
+    let found = false, ri, ci;
 
     for (let r = 0; r < 4; r++) {
       for (let c = 0; c < 4; c++) {
@@ -72,7 +70,7 @@ function getLatLngFromDigiPin(digiPin) {
       if (found) break;
     }
 
-    if (!found) throw new Error('Invalid character in DIGIPIN');
+    if (!found) throw new Error("Invalid character in DIGIPIN");
 
     const latDiv = (maxLat - minLat) / 4;
     const lonDiv = (maxLon - minLon) / 4;
@@ -88,11 +86,30 @@ function getLatLngFromDigiPin(digiPin) {
     maxLon = lon2;
   }
 
-  const centerLat = (minLat + maxLat) / 2;
-  const centerLon = (minLon + maxLon) / 2;
-
   return {
-    latitude: centerLat.toFixed(6),
-    longitude: centerLon.toFixed(6)
+    latitude: ((minLat + maxLat) / 2).toFixed(6),
+    longitude: ((minLon + maxLon) / 2).toFixed(6)
   };
+}
+
+// UI Hookups
+function encode() {
+  const lat = parseFloat(document.getElementById("lat").value);
+  const lon = parseFloat(document.getElementById("lon").value);
+  try {
+    const pin = getDigiPin(lat, lon);
+    document.getElementById("pinResult").textContent = "DIGIPIN: " + pin;
+  } catch (err) {
+    document.getElementById("pinResult").textContent = err.message;
+  }
+}
+
+function decode() {
+  const pin = document.getElementById("digi").value.trim();
+  try {
+    const coords = getLatLngFromDigiPin(pin);
+    document.getElementById("coordResult").textContent = `Latitude: ${coords.latitude}, Longitude: ${coords.longitude}`;
+  } catch (err) {
+    document.getElementById("coordResult").textContent = err.message;
+  }
 }

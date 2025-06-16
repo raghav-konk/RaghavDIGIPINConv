@@ -1,45 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Raghav's DIGIPIN Converter</title>
-  <link rel="stylesheet" href="site.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIGIPIN Converter</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>DIGIPIN Converter</h1>
 
-  <h2>Encode</h2>
-  <input type="number" id="lat" placeholder="Latitude">
-  <input type="number" id="lon" placeholder="Longitude">
-  <button onclick="convertToPin()">Convert to DIGIPIN</button>
-  <p id="pinOutput"></p>
+  <div class="card">
+    <h2>Encode (Lat, Lon → DIGIPIN)</h2>
+    <label for="lat">Latitude:</label>
+    <input type="number" id="lat" placeholder="Enter Latitude" step="any" />
 
-  <h2>Decode</h2>
-  <input type="text" id="digiPin" placeholder="DIGIPIN">
-  <button onclick="convertToLatLon()">Convert to Lat/Lon</button>
-  <p id="coordOutput"></p>
+    <label for="lon">Longitude:</label>
+    <input type="number" id="lon" placeholder="Enter Longitude" step="any" />
 
-  <script src="main.js"></script>
-  <script>
-    function convertToPin() {
-      const lat = parseFloat(document.getElementById('lat').value);
-      const lon = parseFloat(document.getElementById('lon').value);
-      try {
-        const pin = getDigiPin(lat, lon);
-        document.getElementById('pinOutput').innerText = `DIGIPIN: ${pin}`;
-      } catch (err) {
-        document.getElementById('pinOutput').innerText = err.message;
-      }
-    }
+    <button onclick="encode()">Get DIGIPIN</button>
+    <div class="result" id="pinResult"></div>
+  </div>
 
-    function convertToLatLon() {
-      const pin = document.getElementById('digiPin').value;
-      try {
-        const coords = getLatLngFromDigiPin(pin);
-        document.getElementById('coordOutput').innerText = `Latitude: ${coords.latitude}, Longitude: ${coords.longitude}`;
-      } catch (err) {
-        document.getElementById('coordOutput').innerText = err.message;
-      }
-    }
-  </script>
+  <div class="card">
+    <h2>Decode (DIGIPIN → Lat, Lon)</h2>
+    <label for="digi">DIGIPIN:</label>
+    <input type="text" id="digi" placeholder="Enter DIGIPIN (e.g., KJ3-4F5-LM2)" />
+
+    <button onclick="decode()">Get Coordinates</button>
+    <div class="result" id="coordResult"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
