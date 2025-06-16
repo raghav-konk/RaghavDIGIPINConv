@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Raghav's DIGIPIN Converter</title>
+</head>
+<body>
+  <h1>DIGIPIN Converter</h1>
+
+  <h2>Encode</h2>
+  <input type="number" id="lat" placeholder="Latitude">
+  <input type="number" id="lon" placeholder="Longitude">
+  <button onclick="convertToPin()">Convert to DIGIPIN</button>
+  <p id="pinOutput"></p>
+
+  <h2>Decode</h2>
+  <input type="text" id="digiPin" placeholder="DIGIPIN">
+  <button onclick="convertToLatLon()">Convert to Lat/Lon</button>
+  <p id="coordOutput"></p>
+
+  <script src="main.js"></script>
+  <script>
+    function convertToPin() {
+      const lat = parseFloat(document.getElementById('lat').value);
+      const lon = parseFloat(document.getElementById('lon').value);
+      try {
+        const pin = getDigiPin(lat, lon);
+        document.getElementById('pinOutput').innerText = `DIGIPIN: ${pin}`;
+      } catch (err) {
+        document.getElementById('pinOutput').innerText = err.message;
+      }
+    }
+
+    function convertToLatLon() {
+      const pin = document.getElementById('digiPin').value;
+      try {
+        const coords = getLatLngFromDigiPin(pin);
+        document.getElementById('coordOutput').innerText = `Latitude: ${coords.latitude}, Longitude: ${coords.longitude}`;
+      } catch (err) {
+        document.getElementById('coordOutput').innerText = err.message;
+      }
+    }
+  </script>
+</body>
+</html>
