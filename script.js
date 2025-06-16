@@ -105,7 +105,7 @@ function encode() {
 }
 
 function decode() {
-  const pin = document.getElementById("digi").value.trim();
+const pin = document.getElementById("digi").value.trim().toUpperCase();
   try {
     const coords = getLatLngFromDigiPin(pin);
     document.getElementById("coordResult").textContent = `Latitude: ${coords.latitude}, Longitude: ${coords.longitude}`;
