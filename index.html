@@ -7,10 +7,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>DIGIPIN Converter</h1>
+  <h1>Raghav's DIGIPIN Converter</h1>
 
+ 
   <div class="card">
-    <h2>Encode (Lat, Lon → DIGIPIN)</h2>
+    <h1>Decode (DIGIPIN → Lat, Lon)</h1>
+    <h2>Enter the DIGIPIN below to convert into Latitude and Longitude Geocodes</h2>
+    <label for="digi">DIGIPIN:</label>
+    <input type="text" id="digi" placeholder="Enter DIGIPIN (e.g., KJ3-4F5-LM2)" />
+
+    <button onclick="decode()">Get Coordinates</button>
+    <div class="result" id="coordResult"></div>
+  </div>
+
+ <div class="card">
+    <h1>Encode (Lat, Lon → DIGIPIN)</h1>
+    <h2>Enter the Geocodes (Latitude and Longitude) below to convert into DIGIPIN</h2>
+
     <label for="lat">Latitude:</label>
     <input type="number" id="lat" placeholder="Enter Latitude" step="any" />
 
@@ -20,16 +33,6 @@
     <button onclick="encode()">Get DIGIPIN</button>
     <div class="result" id="pinResult"></div>
   </div>
-
-  <div class="card">
-    <h2>Decode (DIGIPIN → Lat, Lon)</h2>
-    <label for="digi">DIGIPIN:</label>
-    <input type="text" id="digi" placeholder="Enter DIGIPIN (e.g., KJ3-4F5-LM2)" />
-
-    <button onclick="decode()">Get Coordinates</button>
-    <div class="result" id="coordResult"></div>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
