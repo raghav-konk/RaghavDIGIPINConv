@@ -35,14 +35,15 @@ This tool is helpful for developers, logistics businesses, geocoding learners, a
 ---
 
 ## 📂 Folder Structure
-├── index.html        # Main HTML page
-├── style.css         # Stylish dark mode & animations
-├── script.js         # Logic for interactions, sound, copy
-└── Audio Files for UX/
-    ├── message.mp3       # MP3 files for option & submit
-    └── select.mp3
+```bash
+  ├──index.html
+  ├──style.css
+  ├──script.js
+  └──Audio Files for UX/
+    ├──message.mp3
+    └──select.mp3
 
-
+```
 
 ---
 
