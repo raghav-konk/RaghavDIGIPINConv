@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .card1 {
   background-color: rgb(158, 58, 0);
   padding: 2rem;
@@ -20,9 +29,14 @@
 
 .inputf{
   max-width: 90%;
+  background-color: rgb(27, 27, 27);
   align-self: center;
   font-size: 1.5rem;
   text-align: center;
+}
+
+input::placeholder{
+  color: #ffffff;
 }
 
 h2 {
@@ -66,16 +80,9 @@ button:hover {
   background-color: var(--button-hover);
 }
 
-.result1 {
-  background: var(--input-bg);
-  border: 2px dashed var(--border);
-  padding: 1rem;
-  border-radius: 10px;
-  font-size: 1rem;
-  word-break: break-word;
-  color: var(--text);
-  margin-top: 1rem;
-}
+#coordResult{
+  background: #000000;
+  }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -98,12 +105,13 @@ button:hover {
   overflow: hidden;
   border-right: 2px solid #fff;
   white-space: nowrap;
+  transform: scale(0.75);
   width: 0;
   animation: typing 3s steps(20, end) 2s forwards, blink 0.4s step-end infinite;
 }
 
 @keyframes typing {
-  from { width: 0; }
+  from { width: 5; }
   to { width: 24ch; }
 }
 
@@ -133,7 +141,8 @@ button {
 
 
 .digipin-info {
-  max-width: 35%;
+  width: 100%;
+  max-width: 600px;
   margin: 3rem auto;
   padding: 2rem;
   font-size: 1.1rem;
@@ -213,4 +222,55 @@ body {
   0% { transform: scale(1.4); opacity: 0; }
   50% { transform: scale(1); opacity: 1; }
   100% { transform: scale(0.9); opacity: 0.5; }
+}
+
+@media screen and (max-width: 768px) {
+  #nametitle {
+    font-size: 2rem;
+    animation: typing 3s steps(20, end) 2s forwards, blink 0.4s step-end infinite;
+    width: 100%;
+  }
+
+  .title1, h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+body {
+    transform: scale(0.78);
+    transform-origin: top center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    overflow-x: hidden;
+  }
+
+  .input, button {
+    font-size: 1.1rem;
+    padding: 0.8rem;
+  }
+
+  .card1,
+  .card2 {
+    padding: 1.5rem;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .digipin-info {
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .loader-text {
+    font-size: 1.8rem;
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
 }
