@@ -15,20 +15,22 @@
   <div class="loader-text"><b>DIGIPIN Converter by Rango</b></div>
 </div>
   <h1 id="nametitle">Raghav's DIGIPIN Converter</h1>
-  <ol class="digipin-info">
-  <li>DIGIPIN is a unique alphanumeric code that represents a geographic location in India.</li>
-  <li>It works like a postal code, but with much higher precision and no need for a map. I mean you can convert the DIGIPIN to Gmaps in this app.</li>
-  <li>Use it to encode or decode any location within India between specified latitude and longitude coordinates.</li>
-</ol>
+
+  <p class="digipin-info">
+  DIGIPIN is a unique alphanumeric code that represents a geographic location in India.
+  It works like a postal code, but with much higher precision and no need for a map. I mean you can convert the DIGIPIN to Gmaps in this app. 
+</p>
   <div class="card1">
     <h1 class="title1">Decode (DIGIPIN → Lat, Lon)</h1>
     <h2 class="title2">Enter the DIGIPIN below to convert into Latitude and Longitude Geocodes</h2>
     <label for="digi">DIGIPIN:</label>
-    <input type="text" id="digi" class="inputf" placeholder="Enter DIGIPIN (e.g., KJ3-4F5-LM2)" />
+
+    <input type="text" id="digi" class="inputf" placeholder="Enter DIGIPIN (e.g., 422-59L-7F6J)" />
     <button id="getcord" onclick="decode()">Get Coordinates</button>
     <div class="result" id="coordResult"></div>
     <p id="coordResult"></p>
-    <button id="gmapsBtn" style="display: none;" onclick="openInGMaps()">Open in Google Maps</button>
+    <button id="gmapsBtn" style="display: none;" onclick="openInGMaps()">Open in Google Maps🗺️</button>
+
   </div>
 
 
@@ -43,7 +45,8 @@
     <label for="lon">Longitude:</label>
     <input type="number" id="lon" class="inputf" placeholder="Enter Longitude" step="any" />
 
-    <button id= "getcode" encode()">Get DIGIPIN</button>
+
+    <button id= "getcode" onclick="encode()">Get DIGIPIN</button>
     <div class="result" id="pinResult"></div>
   </div>
   <script src="script.js"></script>
