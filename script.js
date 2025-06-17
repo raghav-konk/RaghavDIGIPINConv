@@ -1,3 +1,6 @@
+let lastCoords = null;
+
+
 const DIGIPIN_GRID = [
   ['F', 'C', '9', '8'],
   ['J', '3', '2', '7'],
@@ -105,11 +108,49 @@ function encode() {
 }
 
 function decode() {
-const pin = document.getElementById("digi").value.trim().toUpperCase();
+  const pin = document.getElementById("digi").value.trim().toUpperCase();
   try {
     const coords = getLatLngFromDigiPin(pin);
-    document.getElementById("coordResult").textContent = `Latitude: ${coords.latitude}, Longitude: ${coords.longitude}`;
+    document.getElementById("coordResult").textContent =
+      `Latitude: ${coords.latitude}, Longitude: ${coords.longitude}`;
+
+    lastCoords = coords; // Save coordinates for later use
+    document.getElementById("gmapsBtn").style.display = "inline-block"; // Show button
   } catch (err) {
     document.getElementById("coordResult").textContent = err.message;
+    document.getElementById("gmapsBtn").style.display = "none"; // Hide if there's an error
   }
 }
+function openInGMaps() {
+  if (!lastCoords) return;
+  const url = `https://www.google.com/maps?q=${lastCoords.latitude},${lastCoords.longitude}`;
+  window.open(url, "_blank");
+}
+
+
+const copyPinBtn = document.getElementById("copyPinBtn");
+const copyCoordBtn = document.getElementById("copyCoordBtn");
+
+// Load the sound file
+const clickSound = new Audio('soundfx/click.mp3');
+const openinGMaps = new Audio('soundfx/message.mp3');
+
+
+// Play sound on a button click
+document.getElementById('getcord').addEventListener('click', () => {
+  clickSound.currentTime = 0; // Reset in case it's still playing
+  clickSound.play();
+});
+
+// Play sound on a button click
+document.getElementById('getcode').addEventListener('click', () => {
+  clickSound.currentTime = 0; // Reset in case it's still playing
+  clickSound.play();
+});
+
+// Play sound on a gmapsbtnlclick
+document.getElementById('gmapsBtn').addEventListener('click', () => {
+  openinGMaps.currentTime = 0; // Reset in case it's still playing
+  openinGMaps.play();
+});
+
