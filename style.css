@@ -29,11 +29,13 @@ html, body {
 
 .inputf{
   max-width: 90%;
+
   background-color: rgb(27, 27, 27);
   align-self: center;
   font-size: 1.5rem;
   text-align: center;
 }
+
 
 input::placeholder{
   color: #ffffff;
@@ -80,6 +82,7 @@ button:hover {
   background-color: var(--button-hover);
 }
 
+
 #coordResult{
   background: #000000;
   }
@@ -105,12 +108,14 @@ button:hover {
   overflow: hidden;
   border-right: 2px solid #fff;
   white-space: nowrap;
+
   transform: scale(0.75);
   width: 0;
   animation: typing 3s steps(20, end) 2s forwards, blink 0.4s step-end infinite;
 }
 
 @keyframes typing {
+
   from { width: 5; }
   to { width: 24ch; }
 }
@@ -141,6 +146,7 @@ button {
 
 
 .digipin-info {
+
   width: 100%;
   max-width: 600px;
   margin: 3rem auto;
@@ -222,6 +228,7 @@ body {
   0% { transform: scale(1.4); opacity: 0; }
   50% { transform: scale(1); opacity: 1; }
   100% { transform: scale(0.9); opacity: 0.5; }
+
 }
 
 @media screen and (max-width: 768px) {
