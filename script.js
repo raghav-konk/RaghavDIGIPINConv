@@ -170,17 +170,20 @@ const openinGMaps = new Audio('soundfx/message.mp3');
 document.getElementById('getcord').addEventListener('click', () => {
   clickSound.currentTime = 0; // Reset in case it's still playing
   clickSound.play();
+  navigator.vibrate(200);
 });
 
 // Play sound on a button click
 document.getElementById('getcode').addEventListener('click', () => {
   clickSound.currentTime = 0; // Reset in case it's still playing
   clickSound.play();
+  navigator.vibrate(130);
 });
 
 document.getElementById('getcode2').addEventListener('click', () => {
   clickSound.currentTime = 0; // Reset in case it's still playing
   clickSound.play();
+  navigator.vibrate(150);
 });
 
 
@@ -188,5 +191,6 @@ document.getElementById('getcode2').addEventListener('click', () => {
 document.getElementById('gmapsBtn').addEventListener('click', () => {
   openinGMaps.currentTime = 0; // Reset in case it's still playing
   openinGMaps.play();
+  navigator.vibrate(150);
 });
 

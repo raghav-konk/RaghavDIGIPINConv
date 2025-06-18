@@ -269,12 +269,11 @@ body {
     padding: 0.8rem;
   }
 
-  .card1,
-  .card2 {
+  .card1,  .card2, .card3 {
     padding: 1.5rem;
     margin: 1rem auto;
     width: 100%;
-    max-width: 90%;
+    max-width: 100%;
   }
 
   .digipin-info {
