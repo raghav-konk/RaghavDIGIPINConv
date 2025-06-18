@@ -8,17 +8,28 @@ html, body {
 }
 
 .card1 {
-  background-color: rgb(158, 58, 0);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f70d00, #340b00); /* warm orange gradient */
+  padding: 20px;
+  border-radius: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #fbfbfb;
   width: 100%;
   max-width: 600px;
   margin-bottom: 2rem;
 }
 
 .card2 {
-  background-color: rgb(0, 156, 218);
+  background: linear-gradient(270deg, #0d5283, #140062); 
+  padding: 2rem;
+  border-radius: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.card3 {
+  background: linear-gradient(270deg, #00a128, #235a00); 
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);

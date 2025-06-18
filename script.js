@@ -107,6 +107,36 @@ function encode() {
   }
 }
 
+function encode2() {
+  const input = document.getElementById("coords").value.trim(); // 💡 Correct ID, correct var
+
+  // Check if it includes comma
+  if (!input.includes(",")) {
+    document.getElementById("pinResult2").textContent = "Please enter both coordinates separated by a comma.";
+    return;
+  }
+
+  // Split and clean values
+  const [latStr, lonStr] = input.split(",");
+  const lat = parseFloat(latStr.trim());
+  const lon = parseFloat(lonStr.trim());
+
+  // Check if they’re numbers
+  if (isNaN(lat) || isNaN(lon)) {
+    document.getElementById("pinResult2").textContent = "Invalid latitude or longitude.";
+    return;
+  }
+
+  // Calculate DIGIPIN
+  try {
+    const pin = getDigiPin(lat, lon); // 💡 Make sure getDigiPin() is in scope
+    document.getElementById("pinResult2").textContent = "DIGIPIN: " + pin;
+  } catch (err) {
+    document.getElementById("pinResult2").textContent = err.message;
+  }
+}
+
+
 function decode() {
   const pin = document.getElementById("digi").value.trim().toUpperCase();
   try {
@@ -147,6 +177,12 @@ document.getElementById('getcode').addEventListener('click', () => {
   clickSound.currentTime = 0; // Reset in case it's still playing
   clickSound.play();
 });
+
+document.getElementById('getcode2').addEventListener('click', () => {
+  clickSound.currentTime = 0; // Reset in case it's still playing
+  clickSound.play();
+});
+
 
 // Play sound on a gmapsbtnlclick
 document.getElementById('gmapsBtn').addEventListener('click', () => {
