@@ -1,3 +1,4 @@
+
 let lastCoords = null;
 
 
@@ -194,3 +195,36 @@ document.getElementById('gmapsBtn').addEventListener('click', () => {
   navigator.vibrate(150);
 });
 
+function getLocationAndConvert() {
+  clickSound.currentTime = 0;
+  clickSound.play();
+
+  if ("vibrate" in navigator) {
+    navigator.vibrate(150);
+  }
+
+
+  if (!navigator.geolocation) {
+    alert("Geolocation is not supported by your browser.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      try {
+        const pin = getDigiPin(lat, lon);
+        document.getElementById("pinResult").textContent = `Your DIGIPIN: ${pin}`;
+        document.getElementById("lat").value = lat.toFixed(6);
+        document.getElementById("lon").value = lon.toFixed(6);
+      } catch (err) {
+        document.getElementById("pinResult").textContent = err.message;
+      }
+    },
+    (error) => {
+      alert("Unable to retrieve your location. Error: " + error.message);
+    }
+  );
+}
